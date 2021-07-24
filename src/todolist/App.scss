@@ -1,0 +1,77 @@
+@mixin d-flex-row( $justi, $align ) {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: $justi;
+    align-items: $align;
+}
+@mixin d-flex-col( $justi, $align ) {
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: $justi;
+    align-items: $align;
+}
+body{
+    
+    #root{
+        @include d-flex-row(center, start);
+        width: 100%;
+        height: 100vh;
+    }
+}
+.todo-list{
+    margin-top: 3rem;
+    list-style: none;
+    width: 50%;
+    border: 2px #fff solid;
+    padding: 2rem;
+    border-radius: 2rem;
+    @include d-flex-col(start, center);
+
+    .header{
+        font-size: 3vw;
+        color: #ca2276;
+        letter-spacing: 5px;
+    }
+    .todo-item{
+        @include d-flex-row(space-between, center);
+        width: 100%;
+        margin-bottom: 5px;
+        
+        &:not(:first-of-type){
+            border-radius: 5px;
+            padding: 10px 15px;
+            box-shadow: inset 0 0 5px #000;
+        }
+        .todo-input{
+            padding: 10px 15px;
+            border-radius: 5px;
+            outline: none;
+            flex-grow: 1;
+            font-size: 1.5vw;
+            border: none;
+            box-shadow: inset 0 0 5px #000;
+        }
+        .todo-btn{
+            display: inline-block;
+            color: #fff;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            padding: 10px 15px;
+            outline: none;
+            margin-left: 1%;
+            height: 100%;
+            font-size: 1.5vw;
+            cursor: pointer;
+            background-color: #ca2276;
+        }
+        .item-text{
+            display: inline-block;
+            flex-grow: 1;
+            font-size: 1.5vw;
+            font-weight: bold;
+            margin-left: 1%;
+        }
+    }
+    
+}
