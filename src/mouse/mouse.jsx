@@ -17,7 +17,7 @@ const Mouse = () =>{
         return() =>{
             window.removeEventListener('mousemove', logMouseMove);
         }
-    },[values])
+    },[])
     return (
         <React.Fragment>
             <h1>x: {values.x}</h1>
