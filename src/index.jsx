@@ -6,7 +6,12 @@ import './index.css';
 // import App from './todolist/App';
 // import App from './mouse/App';
 // import App from './timer/App';
-import App from './useEffectPractice/App';
+// import App from './useEffectPractice/App';
+// import App from './profile/App';
+// import App from './useContext/App';
+// import App from './counterReducer/App';
+// import App from './axiosReducer/App';
+import App from './useCallback/App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
