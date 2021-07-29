@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 
-const useTitle = (num) =>{
-    const [counter, setCounter] = useState(num)
-    useEffect(() => {
-        setCounter(prevState => prevState + 1);
-        document.title = `increment: ${counter} times`;
-    },[num]);
+const useTitle = (counter) =>{
+    const [num , setNum] = useState(0);
+    useEffect(()=>{
+        setNum(counter);
+        document.title = `increment ${counter} times`;
+        return ()=>{
+            document.title = "React App";
+        }
+    }, [counter])
 }
 
 export default useTitle;

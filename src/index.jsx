@@ -14,13 +14,12 @@ import './index.css';
 // import App from './useCallback/App';
 // import App from './useRef/App';
 // import App from './useRef/useRefGlobal/App';
-import {App, AppTwo} from './costumHook/App';
+import App from './costumHook/App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <AppTwo />
   </React.StrictMode>,
   document.getElementById('root')
 );

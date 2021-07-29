@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Inp from './Form';
 
 // const App = () =>{
@@ -24,20 +24,23 @@ import Inp from './Form';
 // }
 
 const App = () =>{
-    const [text, setText] = useState('');
+    const [value, setValue] = useState('');
     const componentRef = useRef();
-    const clickHandler = (e) =>{
+    const btnRef = useRef();
+    useEffect(()=>{
+        btnRef.current.focus();
+    }, [])
+    const submitHanlder = (e) =>{
         e.preventDefault();
-        setText(componentRef.current.value());
-        componentRef.current.focus();
+        setValue(componentRef.current.valueHandler());
+        componentRef.current.focusHandler();
     }
     return (
         <form>
-            <Inp ref={componentRef} />
-            <button onClick={clickHandler}>yeah</button>
-            <p>{text}</p>
+            <Inp ref={componentRef} eve={setValue} />
+            <button ref={btnRef} onClick={submitHanlder}>focus</button>
+            <p>{value}</p>
         </form>
     )
 }
-
 export default App;

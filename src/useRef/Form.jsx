@@ -1,36 +1,25 @@
-import React, {
-  useState,
-  useRef,
-  forwardRef,
-  useImperativeHandle,
-} from "react";
+import React, { forwardRef, useEffect, useImperativeHandle, useState, useRef } from 'react';
 
-let Inp = (props, ref) => {
-  const [value, setValue] = useState("");
+const Inp = forwardRef(({eve}, ref)=>{
+  const [value, setValue] = useState('');
   const inputRef = useRef();
-  useImperativeHandle(ref, () => ({
-    value: () => {
-      return inputRef.current.value;
-    },
-    focus: () => {
+  // useEffect(()=>{
+  //   eve(value);
+  // },[value])
+  useImperativeHandle(ref, ()=>({
+    focusHandler: ()=>{
       inputRef.current.focus();
     },
-  }));
-  const changeHandler = (e) => {
-    setValue(e.target.value);
-  };
+    valueHandler: ()=>{
+      return inputRef.current.value
+    },
+  }),[])
+  const changeHandler = (e) =>{
+    setValue(e.target.value)
+  }
   return (
-    <>
-      <input
-        type="text"
-        ref={inputRef}
-        value={value}
-        onChange={changeHandler}
-      />
-    </>
-  );
-};
-
-Inp = forwardRef(Inp);
+    <input ref={inputRef} type="text" value={value} onChange={changeHandler}/>
+  )
+})
 
 export default Inp;
