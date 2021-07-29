@@ -11,12 +11,16 @@ import './index.css';
 // import App from './useContext/App';
 // import App from './counterReducer/App';
 // import App from './axiosReducer/App';
-import App from './useCallback/App';
+// import App from './useCallback/App';
+// import App from './useRef/App';
+// import App from './useRef/useRefGlobal/App';
+import {App, AppTwo} from './costumHook/App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <AppTwo />
   </React.StrictMode>,
   document.getElementById('root')
 );

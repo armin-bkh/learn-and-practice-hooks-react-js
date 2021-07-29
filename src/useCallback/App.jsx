@@ -61,8 +61,7 @@ const App = () => {
 
   return (
     <div>
-      <Title title={data.title} />
-      <h2>{nameChanged}</h2>
+      <Title title={data.title} subtitle={nameChanged}/>
       <Name name={data.name} />
       <BtnNameHandler eve={changeNameHandler} innerTxt={data.innerTxt[0]} />
       <Family family={data.family} />

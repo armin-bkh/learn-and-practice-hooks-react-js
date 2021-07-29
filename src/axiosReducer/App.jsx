@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import axios from "axios";
 import './App.scss';
 
@@ -12,13 +12,13 @@ const App = () => {
     switch (action.type) {
       case "success":
         return {
-          loading: false,
+          loading: !currentState.loading,
           error: "",
-          data: action.data,
+          data: action.value,
         };
       case "error":
         return {
-          loading: false,
+          loading: !currentState.loading,
           error: "we have a same error",
           data: {},
         };
@@ -29,16 +29,22 @@ const App = () => {
   const [employee, dispatch] = useReducer(reducer, initialValue);
   useEffect(() => {
     axios
-      .get("https://dummy.restapiexample.com/api/v1/employee/4")
+      .get("https://dummy.restapiexample.com/api/v1/employee/10")
       .then((res) => {
-          dispatch({ type: "success", data: res.data.data });
-        })
-      .catch((err) => dispatch({ type: "error", data: [] }));
+        dispatch({ type: "success", value: res.data.data });
+      })
+      .catch((err) => {
+        dispatch({ type: "error" });
+      });
   }, []);
-  return <h1>
-      {employee.loading ? "loading" : employee.data.employee_name}
+  return (
+    <h1>
+      {employee.loading
+        ? "loading please wait..."
+        : employee.data.employee_name}
       {employee.error ? employee.error : null}
-  </h1>;
+    </h1>
+  );
 };
 
 export default App;
